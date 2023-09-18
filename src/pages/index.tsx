@@ -6,6 +6,11 @@ import Coin from '../components/Coin';
 
 interface CoinData {
     name: string;
+    priceUsd: string;
+    symbol: string;
+    volumeUsd24Hr:string;
+    changePercent24Hr:string;
+    marketCapUsd:string
   }
 
 export default function Page() {
@@ -24,13 +29,11 @@ export default function Page() {
           .catch(error => console.log(error));
       }, []);
 
-      interface Coin {
-        name: string;
-      }
+   
       const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
       };
-        const filteredCoins: Coin[] = coins.filter((coin) =>
+        const filteredCoins: CoinData[] = coins.filter((coin) =>
             coin.name.toLowerCase().includes(search.toLowerCase())
         );
         
@@ -47,10 +50,16 @@ export default function Page() {
         />
       </form>
     </div>
-    {filteredCoins.map(coin => {
+    {filteredCoins.map((coin,index) => {
       return (
         <Coin
-          name={coin.name}
+            key={index}
+            name={coin.name}
+            priceUsd = {coin.priceUsd}
+            symbol = {coin.symbol}
+            volumeUsd24Hr = {coin.volumeUsd24Hr}
+            changePercent24Hr = {coin.changePercent24Hr}
+            marketCapUsd = {coin.marketCapUsd}
         />
       );
     })}

@@ -3,43 +3,50 @@ import styles from '../../styles/Coin.module.scss'
 
 interface CoinProps {
     name: string;
-  
+    priceUsd: string;
+    symbol: string;
+    volumeUsd24Hr:string;
+    changePercent24Hr:string;
+    marketCapUsd:string
   }
   
 const Coin: React.FC<CoinProps>  = ({
-  name,
-//   price,
-//   symbol,
-//   marketcap,
-//   volume,
-//   image,
-//   priceChange
+    name,
+    priceUsd,
+    symbol,
+    volumeUsd24Hr,
+    changePercent24Hr,
+    marketCapUsd
+
 }) => {
+
+    const changePercent = parseFloat(changePercent24Hr);
+
   return (
-    <h1>{name}</h1>
-    // <div className='coin-container'>
-    //   <div className='coin-row'>
-    //     <div className='coin'>
-    //       <img src={image} alt='crypto' />
-    //       <h1>{name}</h1>
-    //       <p className='coin-symbol'>{symbol}</p>
-    //     </div>
-    //     <div className='coin-data'>
-    //       <p className='coin-price'>${price}</p>
-    //       <p className='coin-volume'>${volume.toLocaleString()}</p>
 
-    //       {priceChange < 0 ? (
-    //         <p className='coin-percent red'>{priceChange.toFixed(2)}%</p>
-    //       ) : (
-    //         <p className='coin-percent green'>{priceChange.toFixed(2)}%</p>
-    //       )}
+    <div className='coin-container'>
+      <div className='coin-row'>
+        <div className='coin'>
+          {/* <img src={image} alt='crypto' /> */}
+          <h1>{name}</h1>
+          <p className='coin-symbol'>{symbol}</p>
+        </div>
+        <div className='coin-data'>
+          <p className='coin-price'>${priceUsd}</p>
+          <p className='coin-volume'>${volumeUsd24Hr}</p>
 
-    //       <p className='coin-marketcap'>
-    //         Mkt Cap: ${marketcap.toLocaleString()}
-    //       </p>
-    //     </div>
-    //   </div>
-    // </div>
+          {changePercent < 0 ? (
+            <p className='coin-percent red'>{changePercent.toFixed(2)}%</p>
+          ) : (
+            <p className='coin-percent green'>{changePercent.toFixed(2)}%</p>
+          )}
+
+          <p className='coin-marketcap'>
+            Mkt Cap: ${marketCapUsd}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 
