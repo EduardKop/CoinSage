@@ -8,6 +8,7 @@ interface CoinProps {
     volumeUsd24Hr:string;
     changePercent24Hr:string;
     marketCapUsd:string
+    image:any
   }
   
 const Coin: React.FC<CoinProps>  = ({
@@ -16,36 +17,52 @@ const Coin: React.FC<CoinProps>  = ({
     symbol,
     volumeUsd24Hr,
     changePercent24Hr,
-    marketCapUsd
+    marketCapUsd,
+    image
 
 }) => {
 
     const changePercent = parseFloat(changePercent24Hr);
+    const price = parseFloat(priceUsd);
+    const volume = parseFloat(volumeUsd24Hr);
+    const marketCup = parseFloat(marketCapUsd);
 
   return (
 
-    <div className='coin-container'>
-      <div className='coin-row'>
-        <div className='coin'>
-          {/* <img src={image} alt='crypto' /> */}
-          <h1>{name}</h1>
-          <p className='coin-symbol'>{symbol}</p>
+    <div className={styles.coin_container}>
+      <div className={styles.coin_row}>
+        <div className={styles.coin}>
+          <div className={styles.img}>
+            <img src={image} alt='crypto' />
+          </div>
+          <div className={styles.name_info}>
+            <span className={styles.name}>{name}</span>
+            <span className={styles.symbol}>{symbol}</span>
+          </div>
         </div>
-        <div className='coin-data'>
-          <p className='coin-price'>${priceUsd}</p>
-          <p className='coin-volume'>${volumeUsd24Hr}</p>
-
+        <div className={styles.coin_data}>
+          <div className={styles.coin_main_info}>
+          <span className={styles.coin_price}>${price.toFixed(2)}</span>
           {changePercent < 0 ? (
-            <p className='coin-percent red'>{changePercent.toFixed(2)}%</p>
+            <div className={styles.coin_percent}> 
+              <span className={`${styles.red}`}>{changePercent.toFixed(2)}%</span>
+            </div>
           ) : (
-            <p className='coin-percent green'>{changePercent.toFixed(2)}%</p>
+            <div className={styles.coin_percent}> 
+              <span className={`${styles.green}`}>{changePercent.toFixed(2)}%</span>
+            </div>
           )}
-
-          <p className='coin-marketcap'>
-            Mkt Cap: ${marketCapUsd}
-          </p>
+          </div>
+         
         </div>
       </div>
+      <div className={styles.coin_second_info}>
+          {/* <p className='coin-volume'>${volume.toFixed(2)}</p> */}
+
+          <p className={styles.coin_marketcap}>
+            Mkt Cap: ${marketCup.toFixed(2)}
+          </p>
+          </div>
     </div>
   );
 };

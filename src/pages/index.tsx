@@ -17,6 +17,8 @@ export default function Page() {
     const [coins, setCoins] = useState<CoinData[]>([]);
     const [search, setSearch] = useState<string>('');
 
+    
+
     useEffect(() => {
         axios
           .get(
@@ -24,7 +26,9 @@ export default function Page() {
           )
           .then(res => {
             setCoins(res.data.data);
+
             console.log(coins);
+
           })
           .catch(error => console.log(error));
       }, []);
@@ -38,9 +42,9 @@ export default function Page() {
         );
         
    return (
-    <div className='coin-app'>
-    <div className='coin-search'>
-      <h1 className='coin-text'>Search a currency</h1>
+    <div className={styles.coin_app}>
+    <div className={styles.coin_search}>
+      <h1 className={styles.coin_text}>Search a currency</h1>
       <form>
         <input
           className='coin-input'
@@ -53,6 +57,7 @@ export default function Page() {
     {filteredCoins.map((coin,index) => {
       return (
         <Coin
+            image={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
             key={index}
             name={coin.name}
             priceUsd = {coin.priceUsd}
