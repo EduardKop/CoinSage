@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Switch.css";
-import { useEffect } from "react";
 import { useTheme } from "next-themes";
 
 function Switch() {
   const { theme, setTheme } = useTheme();
-  const [isChecked, setIsChecked] = useState(theme === 'light' ? false : true);
+  const [isChecked, setIsChecked] = useState(theme === 'dark');
 
   const handleThemesChange = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
-
     localStorage.setItem('theme', newTheme);
-
-    localStorage.setItem('isChecked', JSON.stringify(!isChecked));
+    localStorage.setItem('isChecked', JSON.stringify(newTheme === 'dark'));
   };
 
   useEffect(() => {
@@ -22,11 +19,10 @@ function Switch() {
 
     if (!savedTheme) {
       localStorage.setItem('theme', 'light');
-    }
-
-    if (savedTheme) {
+    } else {
       setTheme(savedTheme);
     }
+
     if (savedChecked !== null) {
       setIsChecked(JSON.parse(savedChecked));
     }
@@ -38,7 +34,8 @@ function Switch() {
         type="checkbox"
         checked={isChecked}
         onChange={() => {
-          setIsChecked(!isChecked);
+          const newChecked = !isChecked;
+          setIsChecked(newChecked);
           handleThemesChange();
         }}
       />
@@ -46,4 +43,5 @@ function Switch() {
     </label>
   );
 }
+
 export default Switch;
