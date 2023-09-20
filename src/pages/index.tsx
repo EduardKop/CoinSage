@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.scss'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Coin from '../components/Coin';
+import ToggleThemeButton from '@/components/ToggleThemeButton';
 
 interface CoinData {
     name: string;
@@ -43,16 +44,19 @@ export default function Page() {
         
    return (
     <div className={styles.coin_app}>
-    <div className={styles.coin_search}>
-      <h1 className={styles.coin_text}>Search a currency</h1>
-      <form>
+    <div className={styles.header}>
+      <div className={styles.input}>
         <input
           className='coin-input'
           type='text'
           onChange={handleChange}
           placeholder='Search'
         />
-      </form>
+      </div>
+      <div className={styles.toggle}>
+        <ToggleThemeButton />
+      </div>
+     
     </div>
     {filteredCoins.map((coin,index) => {
       return (
