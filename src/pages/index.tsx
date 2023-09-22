@@ -50,7 +50,7 @@ export default function Page() {
           className='coin-input'
           type='text'
           onChange={handleChange}
-          placeholder='Search'
+          placeholder='Search crypto'
         />
       </div>
       <div className={styles.toggle}>

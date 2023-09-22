@@ -5,13 +5,13 @@ import Switch from "./Switch/Switch";
 
 const ToggleThemeButton : React.FC  = () =>  {
     return(
-        <div >
+        <>
             
             <SunIcon />
             <Switch />
             <MoonIcon />
             
-        </div>
+        </>
     )
 }
 
