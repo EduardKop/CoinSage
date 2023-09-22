@@ -3,7 +3,7 @@
 
 .toggle-switch {
     position: relative;
-    width: 50px;
+    width: 35px;
     height: 25px;
     margin: 0 0.15rem;
   }
@@ -21,6 +21,8 @@
     bottom: 0;
     left: 0;
     transition: background-color 0.2s ease;
+    animation-duration: 3s;
+
   }
   .toggle-switch .switch::before {
     position: absolute;
@@ -29,15 +31,31 @@
     top: 2px;
     width: 21px;
     height: 21px;
-    background-color: #929090;
+    background-color: #666666;
     border-radius: 50%;
     transition: transform 0.3s ease;
-  }
-  .toggle-switch input[type="checkbox"]:checked + .switch::before {
-    transform: translateX(25px);
-    border-color: #03a17f;
-  }
-  .toggle-switch input[type="checkbox"]:checked + .switch {
-    background-color: #cae268;
+    animation-duration: 3s;
+   
 
   }
+ 
+
+  .toggle-switch {
+  }
+  
+  .light-theme .moon {
+    display: none; 
+  }
+  
+  .dark-theme .sun {
+    display: none; 
+  }
+  
+  .hidden {
+    display: none; 
+  }
+
+  .moon:hover,
+.sun:hover {
+  cursor: pointer;
+}

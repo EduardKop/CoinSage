@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Switch.css";
+import "./Switch.scss";
 import { useTheme } from "next-themes";
+import MoonIcon from "../icons/Switch/MoonIcon";
+import SunIcon from "../icons/Switch/SunIcon";
 
 function Switch() {
   const { theme, setTheme } = useTheme();
@@ -29,7 +31,7 @@ function Switch() {
   }, []);
 
   return (
-    <label className="toggle-switch">
+    <label className={`toggle-switch ${theme === 'light' ? 'light-theme' : 'dark-theme'}`}>
       <input
         type="checkbox"
         checked={isChecked}
@@ -39,7 +41,13 @@ function Switch() {
           handleThemesChange();
         }}
       />
-      <span className="switch" />
+      {/* <span className="switch" /> */}
+      <div className={`sun ${theme === 'dark' ? 'hidden' : ''}`}>
+        <SunIcon />
+      </div>
+      <div className={`moon ${theme === 'light' ? 'hidden' : ''}`}>
+        <MoonIcon />
+      </div>
     </label>
   );
 }
