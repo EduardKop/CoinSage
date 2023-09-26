@@ -7,8 +7,9 @@ interface CoinProps {
     symbol: string;
     volumeUsd24Hr:string;
     changePercent24Hr:string;
-    marketCapUsd:string
-    image:any
+    marketCapUsd:string;
+    image:any;
+    click:any
   }
   
 const Coin: React.FC<CoinProps>  = ({
@@ -18,7 +19,8 @@ const Coin: React.FC<CoinProps>  = ({
     volumeUsd24Hr,
     changePercent24Hr,
     marketCapUsd,
-    image
+    image,
+    click
 
 }) => {
 
@@ -29,7 +31,7 @@ const Coin: React.FC<CoinProps>  = ({
 
   return (
 
-    <div className={styles.coin_container}>
+    <div className={styles.coin_container} onClick={click}>
       <div className={styles.coin_row}>
         <div className={styles.coin}>
           <div className={styles.img}>

@@ -42,3 +42,21 @@ width: 40%;
 
     }
 }
+
+.wrapper{
+display: flex;
+}
+
+.main_price{
+display: flex;
+flex-direction: row;
+}
+.main_symbol{
+margin-left: 10px;
+}
+.red{
+    color: #F45C6B;
+    }
+    .green{
+    color: #4ECEA6;
+    }
