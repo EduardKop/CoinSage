@@ -85,7 +85,6 @@ margin-left: 10px;
     margin-top: 120px;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid #4ECEA6;
     max-height: 200px;
     padding: 40px;
     .name{
@@ -101,6 +100,12 @@ margin-left: 10px;
         align-content: center;
         align-items: center;
         }
+    }
+    .carts{
+    font-family: 'Inter-Light';
+    font-size: 11px;
+    margin-top: 30px;
+    color: black;
     }
     .main_price{
     font-family: 'Inter-Light';
