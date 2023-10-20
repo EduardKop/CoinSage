@@ -30,6 +30,7 @@ export default function Page() {
   const [infoCoin, setInfoCoin] = useState<CoinData | null>();
   const [historyInfo, sethistoryInfo] = useState<HistoryData[]>([]);
   const [chartData, setchartData] = useState<HistoryData[]>([]);
+  const [err, setErr] = useState();
 
   useEffect(() => {
     if (infoCoin) {
@@ -79,14 +80,14 @@ export default function Page() {
             if(historyInfo[i].priceUsd != undefined){
             let roundedPriceUsd = parseFloat(historyInfo[i].priceUsd).toFixed(3);
             let dateStr = historyInfo[i].date.split("T")[0];
-            
+            console.log(err)
             arr.push({
                 name: dateStr,
                 price: roundedPriceUsd,
             });
           }
           }catch(err){
-          console.log(err)
+          setErr(err)
           }
           
        
@@ -104,7 +105,7 @@ export default function Page() {
           result.push(res.data.data[res.data.data.length - i]);
         }
         sethistoryInfo(result);
-
+      
         // Добавлено обработка данных для графика
         let arr: HistoryData[] = [];
         for (let i = 0; i < result.length; i++) {
@@ -119,7 +120,10 @@ export default function Page() {
         }
         setchartData(arr);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setErr(error)
+        console.log(error)
+      });
   }
 
   useEffect(() => {

@@ -58,7 +58,12 @@ width: 40%;
 
     }
 }
-
+@media(max-width: 780px){ 
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        }
+}
 .wrapper{
 display: flex;
 }
@@ -79,7 +84,36 @@ margin-left: 10px;
 
 
     //Displayed Coin styles
-
+    @media(max-width: 1325px){ 
+        .main_price{
+            
+            margin-left: 150px;
+            }
+        .name{
+           
+            margin-left: 150px;
+            }
+    }
+    @media(max-width: 985px){ 
+        .main_price{
+            
+            margin-left: 250px;
+            }
+        .name{
+           
+            margin-left: 250px;
+            }
+    }
+    @media(max-width: 780px){ 
+        .main_price{
+            
+            display: none!important
+            }
+        .name{
+               
+            display: none!important
+            }
+    }
 .info_body_container{
     position: fixed;
     margin-top: 120px;
@@ -101,11 +135,32 @@ margin-left: 10px;
         align-items: center;
         }
     }
+    @media(max-width: 780px){ 
+        .carts{
+            display: none;
+            }
+        }
     .carts{
     font-family: 'Inter-Light';
     font-size: 11px;
     margin-top: 30px;
     color: black;
+    @media(max-width: 1325px){ 
+        svg{
+            max-width: 500px;
+            max-height: 200px;
+            margin-left: 100px;
+            }
+        }
+    @media(max-width: 985px){ 
+        svg{
+            max-width: 500px;
+            max-height: 200px;
+            margin-left: 200px;
+            }
+        }
+   
+       
     }
     .main_price{
     font-family: 'Inter-Light';
