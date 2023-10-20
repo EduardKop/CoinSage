@@ -1,3 +1,19 @@
+
+@font-face {
+    font-family: 'Inter-Light';
+    src: url("../../src/fonts/Inter-Light.ttf") ;
+    font-style: regular;
+    font-display: swap;
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Inter-Medium';
+    src: url("../../src/fonts/Inter-Medium.ttf") ;
+    font-style: regular;
+    font-display: swap;
+    font-weight: 300;
+}
+
 .header{
     display: flex;
     justify-content: center;
@@ -60,3 +76,34 @@ margin-left: 10px;
     .green{
     color: #4ECEA6;
     }
+
+
+    //Displayed Coin styles
+
+.info_body_container{
+    position: fixed;
+    margin-top: 120px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #4ECEA6;
+    max-height: 200px;
+    padding: 40px;
+    .name{
+    display: flex;
+        .main_name{
+        font-family: 'Inter-Medium';
+        font-size: 50px;
+        }
+        .main_symbol{
+        font-family: 'Inter-Light';
+        color:#999999;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        }
+    }
+    .main_price{
+    font-family: 'Inter-Light';
+    }
+
+}

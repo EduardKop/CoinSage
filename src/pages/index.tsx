@@ -24,7 +24,7 @@ export default function Page() {
       .then((res) => {
         setCoins(res.data.data);
 
-        const bitcoin = res.data.data.find((coin) => coin.name === 'Bitcoin');
+        const bitcoin = res.data.data.find((coin:any) => coin.name === 'Bitcoin');
         if (bitcoin) {
           setInfoCoin(bitcoin);
         }
@@ -56,7 +56,7 @@ export default function Page() {
             className="coin-input"
             type="text"
             onChange={handleChange}
-            placeholder="Search crypto"
+            placeholder="Search crypto  "
           />
         </div>
         <div className={styles.toggle}>
@@ -85,6 +85,9 @@ export default function Page() {
           {infoCoin && (
             <div className={styles.wrapper_coin}>
               <div className={styles.name}>
+              <div className={styles.img}>
+                <img src={`https://assets.coincap.io/assets/icons/${infoCoin.symbol.toLowerCase()}@2x.png`} alt='crypto' />
+                </div>
                 <span className={styles.main_name}>{infoCoin.name}</span>
                 <span className={styles.main_symbol}>{infoCoin.symbol}</span>
               </div>
