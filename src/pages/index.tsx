@@ -16,8 +16,26 @@ interface CoinData {
 export default function Page() {
   const [coins, setCoins] = useState<CoinData[]>([]);
   const [search, setSearch] = useState<string>('');
-  const [infoCoin, setInfoCoin] = useState<CoinData | null>(null);
+  const [infoCoin, setInfoCoin] = useState<CoinData | null>();
+  const [historyInfo, sethistoryInfo] = useState();
 
+  useEffect(() => {
+    if (infoCoin) {
+    
+    axios.get(`https://api.coincap.io/v2/assets/${(infoCoin.name).toLowerCase()}/history?interval=d1`)
+    .then((res) => {
+        // sethistoryInfo(res.data.data);
+        let result:any = []
+       for (let i=1; i<7;i++){
+        result.push(res.data.data[res.data.data.length-i])
+      }
+        sethistoryInfo(result);
+        
+      })
+      .catch((error) => console.log(error));
+    }
+  }, historyInfo);
+  
   useEffect(() => {
     axios
       .get('https://api.coincap.io/v2/assets/')
@@ -40,7 +58,7 @@ export default function Page() {
     const result = coins.find((target) => target.name === e);
     if (result) {
       setInfoCoin(result);
-      console.log(result)
+      console.log(historyInfo)
     }
   };
 
@@ -85,7 +103,7 @@ export default function Page() {
           {infoCoin && (
             <div className={styles.wrapper_coin}>
               <div className={styles.name}>
-              <div className={styles.img}>
+                <div className={styles.img}>
                 <img src={`https://assets.coincap.io/assets/icons/${infoCoin.symbol.toLowerCase()}@2x.png`} alt='crypto' />
                 </div>
                 <span className={styles.main_name}>{infoCoin.name}</span>
