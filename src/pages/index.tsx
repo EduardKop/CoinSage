@@ -94,7 +94,9 @@ export default function Page() {
         
       }
       console.log(arr)
-      setchartData(arr);
+      if(arr.length != 0){
+        setchartData(arr);
+      }
     }
   };
   const fetchHistoryData = (coinName: string) => {
@@ -122,6 +124,7 @@ export default function Page() {
       })
       .catch((error) => {
         setErr(error)
+
         console.log(error)
       });
   }
